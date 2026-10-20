@@ -69,11 +69,26 @@
   }
 
   var fab = document.getElementById("fab");
+  var typing = false;
+  document.addEventListener("focusin", function (event) {
+    if (!event.target.closest || !event.target.closest("form")) return;
+    typing = true;
+    syncFab();
+  });
+  document.addEventListener("focusout", function () {
+    window.setTimeout(function () {
+      typing = !!(document.activeElement && document.activeElement.closest && document.activeElement.closest("form"));
+      syncFab();
+    }, 0);
+  });
   function syncFab() {
     if (!fab) return;
     var hero = document.querySelector(".hero");
     var overHero = hero && hero.getBoundingClientRect().bottom > window.innerHeight - 24;
-    fab.classList.toggle("is-hidden", overHero);
+    var form = document.querySelector(".form-card");
+    var box = form && form.getBoundingClientRect();
+    var overForm = box && box.top < window.innerHeight - 16 && box.bottom > window.innerHeight - 96;
+    fab.classList.toggle("is-hidden", overHero || overForm || typing);
     var scrolled = window.scrollY > 140;
     fab.classList.toggle("is-wa", scrolled);
     fab.href = scrolled ? WA : CALL;

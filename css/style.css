@@ -703,7 +703,7 @@ input:focus, select:focus, textarea:focus {
 .fab {
   position: fixed;
   right: 18px;
-  bottom: 18px;
+  bottom: calc(18px + env(safe-area-inset-bottom));
   z-index: 45;
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
