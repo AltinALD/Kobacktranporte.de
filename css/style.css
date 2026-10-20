@@ -708,10 +708,11 @@ input:focus, select:focus, textarea:focus {
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
 .fab.is-hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transform: translateY(10px);
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  animation: none !important;
+  transform: translateY(12px);
 }
 .fab {
   display: inline-flex;
@@ -838,6 +839,7 @@ input:focus, select:focus, textarea:focus {
   .trust-grid { padding: 18px 16px; }
   .trust strong { font-size: 1.35rem; }
   .form-card { padding: 16px; }
+  input, select, textarea { font-size: 16px; }
   .form-grid, .quick-row { grid-template-columns: 1fr; }
   .footer .logo img { height: 64px; }
   .studio { padding-top: 48px; }

@@ -81,13 +81,17 @@
       syncFab();
     }, 0);
   });
+  function viewHeight() {
+    return window.visualViewport ? window.visualViewport.height : window.innerHeight;
+  }
   function syncFab() {
     if (!fab) return;
     var hero = document.querySelector(".hero");
-    var overHero = hero && hero.getBoundingClientRect().bottom > window.innerHeight - 24;
+    var bottom = viewHeight();
+    var overHero = hero && hero.getBoundingClientRect().bottom > bottom - 24;
     var form = document.querySelector(".form-card");
     var box = form && form.getBoundingClientRect();
-    var overForm = box && box.top < window.innerHeight - 16 && box.bottom > window.innerHeight - 96;
+    var overForm = box && box.top < bottom - 8 && box.bottom > 64;
     fab.classList.toggle("is-hidden", overHero || overForm || typing);
     var scrolled = window.scrollY > 140;
     fab.classList.toggle("is-wa", scrolled);
@@ -104,6 +108,11 @@
   }
   syncFab();
   window.addEventListener("scroll", syncFab, { passive: true });
+  window.addEventListener("resize", syncFab);
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener("resize", syncFab);
+    window.visualViewport.addEventListener("scroll", syncFab);
+  }
 
   document.querySelectorAll('a[href="#kontakt"]').forEach(function (link) {
     link.addEventListener("click", function () {
