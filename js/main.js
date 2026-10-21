@@ -156,15 +156,14 @@
     var first = String(data.get("vorname") || "").trim();
     var last = String(data.get("nachname") || "").trim();
     var email = String(data.get("email") || "").trim();
-    var phone = String(data.get("telefon") || "").trim();
     var address = String(data.get("adresse") || "").trim();
     var pickup = String(data.get("abholung") || "").trim();
     var when = String(data.get("datum") || "").trim();
     var clock = String(data.get("uhrzeit") || "").trim();
     var consent = data.get("einwilligung");
     if (error) error.textContent = "";
-    if (!first || !last || !phone || !address || !pickup || !when || !clock || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || consent !== "ja") {
-      if (error) error.textContent = "Bitte Vorname, Nachname, E-Mail, Telefon, Adresse, Abholort, Datum, Uhrzeit und die Einwilligung ausfüllen.";
+    if (!first || !last || !address || !pickup || !when || !clock || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || consent !== "ja") {
+      if (error) error.textContent = "Bitte Vorname, Nachname, E-Mail, Adresse, Abholort, Datum, Uhrzeit und die Einwilligung ausfüllen.";
       return;
     }
 
@@ -190,7 +189,6 @@
           "Vorname: " + first,
           "Nachname: " + last,
           "E-Mail: " + email,
-          "Telefon: " + phone,
           "Adresse: " + address,
           "Abholort: " + pickup,
           "Zieladresse: " + String(data.get("ziel") || ""),
@@ -200,7 +198,7 @@
           "",
           String(data.get("nachricht") || "")
         ].join("\n");
-        window.location.href = "mailto:info@kobacktransporte.com?subject=" + encodeURIComponent("Anfrage über die Website") + "&body=" + encodeURIComponent(body);
+        window.location.href = "mailto:lingeriebygk@gmail.com?subject=" + encodeURIComponent("Anfrage über die Website") + "&body=" + encodeURIComponent(body);
         form.hidden = true;
         if (success) success.classList.add("is-on");
       })

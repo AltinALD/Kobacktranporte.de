@@ -280,6 +280,16 @@ h1, h2, h3, p { margin: 0; }
   text-transform: uppercase;
   font-weight: 700;
 }
+.mail-link {
+  display: block;
+  margin: 8px 0 16px;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: clamp(1.05rem, 2.2vw, 1.45rem);
+  letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
+}
 .phone-xl {
   display: block;
   margin: 8px 0 16px;
